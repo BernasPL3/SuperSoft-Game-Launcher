@@ -1,29 +1,36 @@
 #include <stdio.h>
+#include "launcher.h"
 
 int main() {
-    int escolha;
+    int opcao;
+    int jogo;
 
-    while (1) {
-        printf("\n=== SuperSoft Game Launcher ===\n");
-        printf("1. Abrir jogo\n");
-        printf("2. Lista de jogos\n");
-        printf("3. Sair\n");
-        printf("Escolha: ");
-        scanf("%d", &escolha);
+    while(1) {
+        launcher_show_menu();
 
-        switch (escolha) {
+        printf("\nOpcao: ");
+        scanf("%d", &opcao);
+
+        switch(opcao) {
             case 1:
-                printf("Abrindo jogo...\n");
+                launcher_list_games();
                 break;
+
             case 2:
-                printf("Jogos instalados:\n");
-                printf("- Bread Kart\n");
-                printf("- Cube Adventure\n");
+                launcher_list_games();
+
+                printf("\nNumero do jogo: ");
+                scanf("%d", &jogo);
+
+                launcher_launch_game(jogo);
                 break;
+
             case 3:
+                printf("Saindo...\n");
                 return 0;
+
             default:
-                printf("Opcao invalida\n");
+                printf("Opcao invalida.\n");
         }
     }
 }
